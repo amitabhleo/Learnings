@@ -3,7 +3,7 @@
 Calculating the Account Sharing based on the Account pincode
 The corresponding pincode will be picked from the Territory
 The territory members will be shared with the Account
-Please rewrite with the following Steps
+Please rewrite with the following Steps.
 */
 trigger AccountTerritory on Account (before insert,after update) {
     //Now that we have got the territory list create a map with Ids and Territory members

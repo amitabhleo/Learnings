@@ -6,6 +6,7 @@ trigger AccountBeforeEventListner on Account (before insert,before update) {
         //calling the class from here
         AccountUtil.setDefultValues(Trigger.new);
         AccountUtil.setIndustry(Trigger.new);
+        //adding a few comments
     }
 
 }
