@@ -1,0 +1,17 @@
+<aura:component >
+    <!-- let us create a component with aura attribute to test -->
+    <aura:attribute name ="messages" type ="List"
+                    default= "['you look nice today','Wow have a wonderful day','take Care!']"/>
+     <!-- passing this to a value getter v. from another components which defined message -->               
+        <h1>Hello Playground</h1>
+    <p>Silly playground app with value getters</p>
+    <h2>List items</h2>
+    <p><c:helloMessage message ="{!v.messages[0]}"/> </p>
+    <p><c:helloMessage message ="{!v.messages[1]}"/> </p>
+    <p><c:helloMessage message ="{!v.messages[2]}"/> </p>
+    <h1>List using iteration</h1>
+    <aura:iteration items ="{!v.messages}" var ="msg">
+      <p><c:helloMessage message = "{!msg}"/></p> 
+    </aura:iteration>
+	
+</aura:component>
