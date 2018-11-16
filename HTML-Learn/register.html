@@ -5,28 +5,36 @@
     <title>Register</title>
   </head>
   <body>
-    <form >
-      First Name: <input type="text" ><br>
-      Last Name: <input type="text" ><br>
-      Email: <input type="email" required><br>
-      Birthdate : <input type="date" ><br>
-      Password : <input type="password" min="5"><br>
+    <!-- use get not post -->
+    <form method="get">
+      First Name: <input type="text" name="firstName"><br>
+      Last Name: <input type="text" name="lastname"><br>
+      Email: <input type="email" required name="email"><br>
+      Birthdate : <input type="date" name="birthdate"><br>
+      Password : <input type="password" name="password" min="5"><br>
       Gender :<br>
-      <input type="radio" name="Gender">Male <br>
-      <input type="radio" name="Gender">Female <br>
-      <input type="radio" name="Gender">Other <br>
+      <input type="radio" name="Gender" value="male">Male <br>
+      <input type="radio" name="Gender" value="female">Female <br>
+      <input type="radio" name="Gender" value="others">Other <br>
       Pets :<br>
-      <input type="checkbox" >Cat <br>
-      <input type="checkbox">Dogs<br>
+      <input type="checkbox" name="cat" >Cat <br>
+      <input type="checkbox" name="dog" >Dogs<br>
       Cars :<br>
-      <select >
-        <option value="Volvo">Volvo</option>
-        <option value="Audi">Audi</option>
+      <select name="cars">
+        <option value="Volvo"  >Volvo</option>
+        <option value="Audi"  >Audi</option>
       </select><br>
       <input type="submit" value="Register!">
       <input type="reset" >
-
     </form>
-
   </body>
 </html>
+<!-- ?
+firstName=fake
+&lastname=name
+&email=fake%40gmail.com
+&birthdate=2018-11-14
+&password=123
+&Gender=male
+&cat=on
+&cars=Volvo -->
