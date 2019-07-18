@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register</title>
+    <link rel="stylesheet" href="/HTML-learn1/style.css">
+    </head>
+<body>
+    <!--Creating the first form
+        using get and not post so that i can get
+        the details from query selector in the URL-->
+        <h1>Register</h1>
+    <form action="" method="GET">
+        First Name: <input type="text" name="firstname" id=""><br>
+        Last Name:  <input type="text" name="lastname" id=""><br>
+        Email: <input type="email" name="email" id=""><br>
+        Birthdate: <input type="date" name="birthdate" id=""><br>
+        Password: <input type="password" name="password" id="" required><br>
+        Gender:<br>
+        <input type="radio" name="Male" id="">Male<br>
+        <input type="radio" name="Female" id="">Female<br>
+        <input type="radio" name="Other" id="">Other<br>
+        Pets:<br>
+        <input type="checkbox" name="Dog" id="">Dog<br>
+        <input type="checkbox" name="Cat" id="">Cat<br>
+        Cars:<br>
+        <select name="cars" id="">
+            <option value="Audi">Audi</option>
+            <option value="Volvo">Volvo</option>
+            <option value="BMW">BMW</option>
+        </select><br>
+        <input type="submit" value="Register !">
+        <input type="reset" value="Reset">
+    </form>
+</body>
+</html>
+<!--
+    Query Selecter from Get
+    HTML-learn1/register.html?
+    firstname=test
+    &lastname=one
+    &email=test%40gmail.com
+    &birthdate=1966-08-04
+    &password=secureaaa
+    &Male=on
+    &Cat=on
+    &cars=BMW
+-->
