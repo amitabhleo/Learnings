@@ -1,14 +1,14 @@
 //adding the ordered list to the html
 
-const ul = document.querySelector('people');
+const ul = document.querySelector('.people');
 
-const people = ['amitabh','Geetanjali','Mihir','Megha'];
+const people = ['Amitabh','Geetanjali','Mihir','Megha'];
 
 let html = ``;
 
 //for each
 
-people.forEach(function(person){
+people.forEach((person)=>{
     html += `<li>${person}</li>`;
 });
 
