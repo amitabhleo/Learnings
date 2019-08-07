@@ -1,7 +1,7 @@
 //callBack functions contd...
 const persons = ['amitabh','Geetanjali','Mihir','Megha'];
 
-//foreach
+//foreach has a callbak function
 
 persons.forEach(function(people,index){
     console.log(index,people);
@@ -9,16 +9,14 @@ persons.forEach(function(people,index){
 
 //converting to an arrow function
 
-// persons.forEach((people,index)=>{
-//     console.log(index,people)}
-//     );
+persons.forEach((people,index)=>{
+    console.log (`index of ${index} value ${people}`)
+});
 
 //log person
 
-const logPerson =(people,index)=>{
-    console.log(`logged in ${index} person name ${people}`)
+const logperson = (person,index) =>{
+    console.log(`element ${index} value is ${person}`)
 };
-
-//passing this into the forEach
-
-persons.forEach(logPerson);
+//calling this from a for each
+persons.forEach(logperson);

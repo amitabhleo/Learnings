@@ -1,6 +1,6 @@
 // //passing arguments to the function setting defaults
 // const speak = function (name = 'Amitabh', time = 'day') {
-//      //using a template
+//      //using a template string
 //    console.log(`Good ${time} ${name}`)
 // };
 // speak();
@@ -25,9 +25,9 @@ console.log(calcArea1(7));
 
 //greeting basic arrow function
 
-const greet =() => 'Hello World';
+const greet =(a) => `Hey ${a}, here I come`;
 
-console.log(greet());
+console.log(greet("amitabh"));
 
 //more complex arrow
 // const bill = function(products,rate){
