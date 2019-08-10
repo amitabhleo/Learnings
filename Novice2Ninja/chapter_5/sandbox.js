@@ -3,7 +3,7 @@ const blogs = [
     {title:"Learning Salesforce for Beginers",likes: 30},
     {title:"Learning Developer dot force dot com",likes: 50},
 ];
-
+console.log('outside the object checking the blogs');
 console.log(blogs);
 
 
