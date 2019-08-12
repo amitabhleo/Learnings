@@ -13,6 +13,7 @@ let random = Math.random();
 random = (Math.round(random * 100));
 console.log(random);
 //console.log(Math.round(random * 100));
+
 rlink = robolink.src + random;
 html = '';
 console.log(rlink);
