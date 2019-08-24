@@ -3,13 +3,16 @@ const title = document.querySelector('h1');
 console.log(title.innerText);
 let robolink = document.querySelector('img');
 
-console.log(robolink.src);
+//onsole.log(robolink.src);
 
 rlink = robolink.src;
 
 //querying updating the robolink
 //random generator
+const showBot=(()=>{
+
 let random = Math.random();
+
 random = (Math.round(random * 100));
 console.log(random);
 //console.log(Math.round(random * 100));
@@ -17,8 +20,10 @@ console.log(random);
 rlink = robolink.src + random;
 html = '';
 console.log(rlink);
-title.innerText += random;
+title.innerText = random;
 
 robolink.src = rlink;
 
-console.log(robolink.src);
+});
+
+setInterval(showBot,2000);
