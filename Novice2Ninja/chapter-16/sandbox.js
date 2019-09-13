@@ -6,7 +6,7 @@ const addRecipe = (recipe,id)=> {
   const time = recipe.created_at.toDate();
   let html = `
         <li data-id = "${id}"> 
-        <div style="color: brown">${recipe.title}</div>
+        <div>${recipe.title}</div>
         <div>${time}</div>
         <button class = "btn btn-danger">Delete</button>
         </li>

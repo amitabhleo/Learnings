@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>firebase demo</title>
+</head>
+<body>
+    <h1>Hotdog Status : </h1>
+    <ul>
+        
+    </ul>
+    <form action="">
+        <h2>Please fill the form below</h2>
+        <label for="enter-name">Add a new family member</label>
+        <input type="text" id="name" required>
+        <button type="submit">add</button><br><br>
+      <input type="text" placeholder="is hot dog a burger?" name="hotdog-status" id="hdog">
+  <input type="button" value="submit"><br><br>
+  </form>
+<input type="file" name="fileButton" id="fileButton" accept="image/*" >
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-storage.js"></script>
+
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDt3EFayh17qgDing_Nas1hjJG86nk8SDQ",
+    authDomain: "my-family-9ae9d.firebaseapp.com",
+    databaseURL: "https://my-family-9ae9d.firebaseio.com",
+    projectId: "my-family-9ae9d",
+    storageBucket: "my-family-9ae9d.appspot.com",
+    messagingSenderId: "643234801405",
+    appId: "1:643234801405:web:b775d96ae67952bc"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+  const storage = firebase.storage();
+</script>
+<script src="sandbox.js"></script>
+<script src="sandbox1.js"></script>
+</body>
+</html>
