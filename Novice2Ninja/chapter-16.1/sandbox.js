@@ -1,11 +1,5 @@
 //adding the  names from my profile collection
-//real time listers
-db.collection("Profiles").onSnapshot(snapshot =>{
-    console.log(snapshot.docChanges());
-    snapshot.docs.forEach(doc => {
-      addName(doc.data().name, doc.id);
-    });
-});
+//real time listers check if this is working
 
 const list = document.querySelector("ul");
 const form = document.querySelector("form");
@@ -20,7 +14,6 @@ const addName = (name, id) => {
   list.innerHTML += html;
 };
 //get documents
-
 db.collection("Profiles")
   .get()
   .then(snapshot => {

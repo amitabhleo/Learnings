@@ -6,17 +6,18 @@
     <title>firebase demo</title>
 </head>
 <body>
-    <h1>Hotdog Status : </h1>
+    <h2>Hotdog Status : </h2>
     <ul>
-        
+     
     </ul>
+    <img src="https://firebasestorage.googleapis.com/v0/b/my-family-9ae9d.appspot.com/o/images%2Fsunset-on-road.jpg?alt=media&token=309b7a1c-0358-465f-88d9-d17bb3d94776" width="50%">
     <form action="">
-        <h2>Please fill the form below</h2>
+        <h3>Please fill the form below</h3>
         <label for="enter-name">Add a new family member</label>
-        <input type="text" id="name" required>
+        <input type="text" id="name" placeholder = "family name" required>
         <button type="submit">add</button><br><br>
       <input type="text" placeholder="is hot dog a burger?" name="hotdog-status" id="hdog">
-  <input type="button" value="submit"><br><br>
+    <input type="button" value="submit"><br><br>
   </form>
 <input type="file" name="fileButton" id="fileButton" accept="image/*" >
 
@@ -45,7 +46,7 @@
   const db = firebase.firestore();
   const storage = firebase.storage();
 </script>
-<script src="sandbox.js"></script>
+<!-- <script src="sandbox.js"></script> -->
 <script src="sandbox1.js"></script>
 </body>
 </html>
