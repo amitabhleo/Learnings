@@ -67,11 +67,11 @@ fileButton.addEventListener("change", e => {
   storageRef
     .put(file)
     .then(snapshot => {
-      snapshot.ref.getDownloadURL().then(function(downloadURL) {
+      snapshot.ref.getDownloadURL().then(downloadURL => {
         console.log("File available at", downloadURL);
         changeImage(downloadURL);
         const tempUrl = downloadURL;
-        addSts('new file from fireStore',tempUrl);
+        addSts(file.name, tempUrl);
       });
     })
     .catch(err => {
