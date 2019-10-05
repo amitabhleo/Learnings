@@ -33,12 +33,12 @@ function renderCafe(doc) {
 }
 
 // getting data
-// db.collection('cafes')
-// .orderBy('city').get().then(snapshot => {
-//        snapshot.docs.forEach(doc => {
-//         renderCafe(doc);
-//     });
-// });
+db.collection('cafes')
+.orderBy('city').get().then(snapshot => {
+       snapshot.docs.forEach(doc => {
+        renderCafe(doc);
+    });
+});
 //trying to query subCollection 
 // db.collection('/cafes/2SBrrZ4OME3GkNzGzuUZ/items')
 // .get().then(snapshot => {
@@ -46,13 +46,13 @@ function renderCafe(doc) {
 //         renderCafe(doc);
 //     });
 // });
-//another way to query sub-collection this seems a better way
-db.collection('cafes').doc('2SBrrZ4OME3GkNzGzuUZ').collection('items')
-.get().then(snapshot => {
-       snapshot.docs.forEach(doc => {
-        renderCafe(doc);
-    });
-});
+//another way to query sub-collection this seems a better way -working code
+    // db.collection('cafes').doc('2SBrrZ4OME3GkNzGzuUZ').collection('items')
+    // .get().then(snapshot => {
+    //       snapshot.docs.forEach(doc => {
+    //         renderCafe(doc);
+    //     });
+    // });
 // saving data
 form.addEventListener("submit", e => {
   e.preventDefault();
