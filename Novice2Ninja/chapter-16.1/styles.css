@@ -26,7 +26,7 @@ ul{
 }
 
 li{
-    padding: 20px;
+    padding: 50px;
     background: #f6f6f6;
     font-size: 20px;
     color: #555;
@@ -36,7 +36,7 @@ li{
 }
 
 li:nth-child(even){
-    padding: 20px;
+    padding: 50px;
     background: #f2f2f2;
 }
 
