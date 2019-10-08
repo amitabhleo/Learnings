@@ -1,6 +1,19 @@
 const cafeList = document.querySelector('#cafe-list');
 const form = document.querySelector("#add-cafe-form");
+const cafeName = document.querySelector(".cafeId");
 
+  // TODO:locate your element and add the Click Event Listener
+  document.getElementById("cafe-list").addEventListener("click",function(e) {
+    // e.target is our targetted element.
+                // try doing console.log(e.target.nodeName), it will result LI
+    if(e.target && e.target.nodeName == "LI") {
+        console.log(e.target.id + " was clicked");
+        console.log(e.target.getAttribute('data-id')+ " value of data-id");
+        const dataid = e.target.getAttribute('data-id');
+        cafeName.innerHTML = `<h2>${dataid}</h2>`;
+        window.open("http://127.0.0.1:5500/Novice2Ninja/chapter-16.1/Items.html");
+      }
+    });
 //creating a function to render cafe
 function renderCafe(doc){
     //creating elements to li
