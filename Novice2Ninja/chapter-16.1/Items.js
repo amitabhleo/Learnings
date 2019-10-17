@@ -10,7 +10,7 @@ function renderItems(doc) {
   //creating elements to li
   let li = document.createElement("li");
   let name = document.createElement("span");
-  //let city = document.createElement("span");
+  let product = document.createElement("span");
   let item = document.createElement("span");
   let image = document.createElement("img");
   //let btn = document.createElement("BUTTON")
@@ -18,10 +18,12 @@ function renderItems(doc) {
   li.setAttribute("data-id", doc.id);
   name.textContent = doc.data().name;
   item.textContent = doc.data().item;
+  product.textContent = "product name here";
   image.src = doc.data().item_photo;
 
   li.appendChild(name);
   li.appendChild(item);
+  li.appendChild(product);
   li.appendChild(image);
   itemsList.appendChild(li);
   //itemsList.appendChild(li);
@@ -34,20 +36,56 @@ function renderItems(doc) {
 //     });
 // });
 //another way to query sub-collection this seems a better way -working code
-// db.collection("vendors")
-//   .doc("qXrUwwcJGwEX7ngqfvBx")
-//   .collection("items")
-//   .where("name","==","pav bhaji")
-//TODO:CollectionGroup query testing
-db.collectionGroup("items")
-  .where("name", ">", "a")
-  .get()
+  db.collection("vendors")
+    .doc("qXrUwwcJGwEX7ngqfvBx")
+    .collection("items")
+    //.where("name","==","pav bhaji")
+.get()
   .then(snapshot => {
-    snapshot.docs.forEach(doc => {
-      //console.log(doc.data().item_photo);
-      renderItems(doc);
+    snapshot.docs.forEach(docu => {
+      console.log(docu.id);
+    
+      renderItems(docu);
     });
   });
+//TODO: fetching the products collection
+db.doc("projects/my-family-9ae9d/products/aloo")
+   .get()
+  .then(prd => {
+    var prodAloo = prd.id;
+    console.log("long path:", prd.id);
+  });
+//projects/my-family-9ae9d/databases/(default)/documents/products/aloo
+//Nw2Idi4Ry9uKyG4VQrYk
+
+//vendors/GegiiT80tJ8dWoXCHXBK/items/Nw2Idi4Ry9uKyG4VQrYk
+var prodRefAloo = db
+  .collection("vendors")
+  .doc("GegiiT80tJ8dWoXCHXBK")
+  .collection("items")
+  //.doc("BNbENCc1TPrLy77pGx0q")
+  //.collection("product")
+  //.doc("aloo")
+  .get()
+  .then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+        console.log(`${doc.id} => ${doc.data().type}`);
+        console.log(`${doc.id} => ${doc.data()}`);
+    });
+});
+
+//TODO:CollectionGroup query testing
+
+db.collectionGroup("items")
+  .where("name", ">", "a")
+  //.orderBy("prod-ref", "asc")
+  // .get()
+  // .then(snapshot => {
+  //   snapshot.docs.forEach(docu => {
+  //     console.log(docu.data());
+  //     renderItems(docu);
+  //   });
+  // });
 // saving data
 
 //Old codeadding new restaurant to firebase
