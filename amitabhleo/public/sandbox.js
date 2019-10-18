@@ -65,3 +65,19 @@ list.addEventListener("click", e => {
       })
     }
 });
+
+//uploading a file in firebase storage
+//later pass the refence in firebase database
+
+fileButton.addEventListener("change", e => {
+  let file = e.target.files[0];
+  console.log(e.target.files[0]);
+ 
+    // Points to the images root reference
+    var storageRef = firebase.storage().ref('images/'+file.name);
+
+    let task = storageRef.put(file);
+
+  
+});
+
