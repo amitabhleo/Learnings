@@ -26,14 +26,14 @@ function renderCafe(doc) {
   //adding elements to li
   li.setAttribute("data-id", doc.id);
   name.textContent = doc.data().name;
-  item.textContent = doc.data().item;
   city.textContent = doc.data().city;
+  item.textContent = doc.data().item;
   image.src = doc.data().photo;
   btn.innerHTML = `<input type="file" name="fileButton" id="fileButton" accept="image/*" ></input>`;
 
   li.appendChild(name);
-  li.appendChild(item);
   li.appendChild(city);
+  li.appendChild(item);
   li.appendChild(image);
 
   cafeList.appendChild(li);

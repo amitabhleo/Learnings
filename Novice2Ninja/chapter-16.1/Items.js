@@ -36,24 +36,26 @@ function renderItems(doc) {
 //     });
 // });
 //another way to query sub-collection this seems a better way -working code
-  db.collection("vendors")
-    .doc("qXrUwwcJGwEX7ngqfvBx")
-    .collection("items")
-    //.where("name","==","pav bhaji")
-.get()
+db.collection("vendors")
+  .doc("qXrUwwcJGwEX7ngqfvBx")
+  .collection("items")
+  //.where("name","==","pav bhaji")
+  .get()
   .then(snapshot => {
     snapshot.docs.forEach(docu => {
+      console.log(docu.data().products.path);
       console.log(docu.id);
-    
+
       renderItems(docu);
     });
   });
 //TODO: fetching the products collection
-db.doc("projects/my-family-9ae9d/products/aloo")
-   .get()
-  .then(prd => {
-    var prodAloo = prd.id;
-    console.log("long path:", prd.id);
+db.doc("/products/FKJCWPS2D9nyhHxaEYi7/Product Family/4xPn7YqHQuuQRwGXOXxL")
+  .get()
+  .then(snap => {
+      
+      console.log("product Name:", snap.data().name);
+      
   });
 //projects/my-family-9ae9d/databases/(default)/documents/products/aloo
 //Nw2Idi4Ry9uKyG4VQrYk
@@ -67,25 +69,24 @@ var prodRefAloo = db
   //.collection("product")
   //.doc("aloo")
   .get()
-  .then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data().type}`);
-        console.log(`${doc.id} => ${doc.data()}`);
+  .then(querySnapshot => {
+    querySnapshot.forEach(doc => {
+      console.log(`${doc.id} => ${doc.data().type}`);
+      console.log(`${doc.id} => ${doc.data()}`);
     });
-});
+  });
 
 //TODO:CollectionGroup query testing
 
-db.collectionGroup("items")
-  .where("name", ">", "a")
-  //.orderBy("prod-ref", "asc")
-  // .get()
-  // .then(snapshot => {
-  //   snapshot.docs.forEach(docu => {
-  //     console.log(docu.data());
-  //     renderItems(docu);
-  //   });
-  // });
+db.collectionGroup("items").where("name", ">", "a");
+//.orderBy("prod-ref", "asc")
+// .get()
+// .then(snapshot => {
+//   snapshot.docs.forEach(docu => {
+//     console.log(docu.data());
+//     renderItems(docu);
+//   });
+// });
 // saving data
 
 //Old codeadding new restaurant to firebase

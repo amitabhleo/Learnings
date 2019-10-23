@@ -42,6 +42,7 @@ li:nth-child(even){
 
 li span{
     display: block;
+    float: left;
 }
 
 li span:nth-child(2){
