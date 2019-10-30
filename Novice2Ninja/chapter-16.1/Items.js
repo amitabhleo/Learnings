@@ -76,17 +76,31 @@ var prodRefAloo = db
     });
   });
 
-//TODO:CollectionGroup query testing
-
-db.collectionGroup("items").where("name", ">", "a");
+//TODO:CollectionGroup query testing uploading in an object
+class Products{
+  //in javascript have to define a constructor
+  constructor(docId,name){
+    this.docId = docId;
+    this.name = name;
+  }
+}
+prdArray = [];
+db.collectionGroup("items")
 //.orderBy("prod-ref", "asc")
-// .get()
-// .then(snapshot => {
-//   snapshot.docs.forEach(docu => {
-//     console.log(docu.data());
-//     renderItems(docu);
-//   });
-// });
+.get()
+.then(snapshot => {
+  snapshot.docs.forEach(docu => {
+    //console.log(typeof docu);
+    prd = new Products(docu.id,docu.data().name);
+    prdArray.push({
+      docId:docu.id,
+      name:docu.data().name
+    });
+    //console.log('PrdArray inside :',prdArray);
+    //renderItems(docu);
+  });
+  console.log('prdNew outside :',prdArray);
+});
 // saving data
 
 //Old codeadding new restaurant to firebase
