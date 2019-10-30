@@ -78,15 +78,20 @@ var prodRefAloo = db
 
 //TODO:CollectionGroup query testing
 
-db.collectionGroup("items").where("name", ">", "a");
+db.collectionGroup("Product Family")
+//.where("name", ">", "a")
 //.orderBy("prod-ref", "asc")
-// .get()
-// .then(snapshot => {
-//   snapshot.docs.forEach(docu => {
-//     console.log(docu.data());
-//     renderItems(docu);
-//   });
-// });
+.get()
+.then(snapshot => {
+
+  snapshot.docs.forEach(docu => {
+    console.log('valueof :',docu.valueOf());
+    console.log('collectionGroup Id :',docu.id);
+    console.log('collectionGroup :',docu.data().name);
+
+    //renderItems(docu);
+  });
+});
 // saving data
 
 //Old codeadding new restaurant to firebase
