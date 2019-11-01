@@ -25,16 +25,17 @@ function renderCafe(doc) {
   let btn = document.createElement("BUTTON");
   //adding elements to li
   li.setAttribute("data-id", doc.id);
+  image.src = doc.data().photo;
   name.textContent = doc.data().name;
   city.textContent = doc.data().city;
   item.textContent = doc.data().item;
-  image.src = doc.data().photo;
-  btn.innerHTML = `<input type="file" name="fileButton" id="fileButton" accept="image/*" ></input>`;
+    btn.innerHTML = `<input type="file" name="fileButton" id="fileButton" accept="image/*" ></input>`;
 
+  li.appendChild(image);
   li.appendChild(name);
   li.appendChild(city);
   li.appendChild(item);
-  li.appendChild(image);
+
 
   cafeList.appendChild(li);
 }

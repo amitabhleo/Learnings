@@ -7,10 +7,38 @@ h1{
     text-align: center;
     color: crimson;
 }
-h2{
-    color: royalblue;
+p{
+  color: slategrey;
+  line-height: 30px;
+  letter-spacing: 2px;
+  columns: 2;
+  column-gap: 30px;
 }
-nav ul{
+ul{
+  /* border-width: 2px;
+  border-style: solid;
+  border-color: crimson; */
+  border: 2px solid #c02a50;
+}
+h2{
+    color: orange;
+    background-color: slategray;
+    font-size: 20px;
+    font-family: Arial;
+    text-align: center;
+}
+li{
+  list-style-type: none;
+  display: inline;
+  padding: 30px;
+  text-decoration: blue;
+}
+a[href]{
+  background-color: green;
+  color: white;
+  text-decoration: none;
+}
+/* nav ul{
     text-align: center;
     padding: 0;
     margin: 30px auto;
@@ -40,4 +68,4 @@ nav ul{
   }
   nav li a:hover{
     text-decoration: underline;
-  }
+  } */

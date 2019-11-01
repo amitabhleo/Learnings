@@ -5,7 +5,7 @@ const header = document.querySelector("h2");
 //TODO:updating cafe header
 header.innerHTML = `<h2>Cafe Name Here</h2>`;
 
-//creating a function to render cafe
+//creating a function to render cafe items
 function renderItems(doc) {
   //creating elements to li
   let li = document.createElement("li");
@@ -16,15 +16,17 @@ function renderItems(doc) {
   //let btn = document.createElement("BUTTON")
   //adding elements to li
   li.setAttribute("data-id", doc.id);
+  image.src = doc.data().item_photo;
   name.textContent = doc.data().name;
   item.textContent = doc.data().item;
-  product.textContent = "product name here";
-  image.src = doc.data().item_photo;
-
+  //TODO:adding the product from URl
+  product.textContent = prdName(doc.data().products.path);
+    console.log('something here:',prdName(doc.data().products.path));
+  li.appendChild(image);
   li.appendChild(name);
   li.appendChild(item);
   li.appendChild(product);
-  li.appendChild(image);
+  
   itemsList.appendChild(li);
   //itemsList.appendChild(li);
 }
@@ -36,34 +38,44 @@ function renderItems(doc) {
 //     });
 // });
 //another way to query sub-collection this seems a better way -working code
-db.collection("vendors")
-  .doc("qXrUwwcJGwEX7ngqfvBx")
-  .collection("items")
+db.collection("/vendors/qXrUwwcJGwEX7ngqfvBx/items")
+// db.collection("vendors")
+//   .doc("qXrUwwcJGwEX7ngqfvBx")
+//   .collection("items")
   //.where("name","==","pav bhaji")
   .get()
   .then(snapshot => {
     snapshot.docs.forEach(docu => {
-      console.log(docu.data().products.path);
-      console.log(docu.id);
-
+      //console.log(docu.data().products.path);
+      // var newurl = (docu.data().products.path);
+      // let prodname = prdName(newurl);
+      // console.log('prodname here:',prodname);
+       //console.log(docu.id);
       renderItems(docu);
     });
   });
 //TODO: fetching the products collection
-db.doc("/products/FKJCWPS2D9nyhHxaEYi7/Product Family/4xPn7YqHQuuQRwGXOXxL")
-  .get()
-  .then(snap => {
-      
-      console.log("product Name:", snap.data().name);
-      
+//db.doc("products/FKJCWPS2D9nyhHxaEYi7/Product Family/1KnVRgG8r9jzYE3yjLp8")
+//db.doc("/products/FKJCWPS2D9nyhHxaEYi7/Product Family/4xPn7YqHQuuQRwGXOXxL")
+  // .get()
+  // .then(snap => { 
+  //     console.log("product Name:", snap.data().name);
+  // });
+const prdName = prdUrl =>{
+    db.doc(prdUrl)
+    .get()
+    .then(snap => {
+      var pname = snap.data().name;
+    console.log("product Name:", pname);//snap.data().name);
+    return pname;
   });
-//projects/my-family-9ae9d/databases/(default)/documents/products/aloo
-//Nw2Idi4Ry9uKyG4VQrYk
+
+};
 
 //vendors/GegiiT80tJ8dWoXCHXBK/items/Nw2Idi4Ry9uKyG4VQrYk
 var prodRefAloo = db
   .collection("vendors")
-  .doc("GegiiT80tJ8dWoXCHXBK")
+  .doc("qXrUwwcJGwEX7ngqfvBx")
   .collection("items")
   //.doc("BNbENCc1TPrLy77pGx0q")
   //.collection("product")
