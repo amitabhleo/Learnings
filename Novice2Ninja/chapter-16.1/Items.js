@@ -74,10 +74,7 @@ function renderItems(doc) {
 // });
 //another way to query sub-collection this seems a better way -working code
 db.collection("/vendors/qXrUwwcJGwEX7ngqfvBx/items")
-  // db.collection("vendors")
-  //   .doc("qXrUwwcJGwEX7ngqfvBx")
-  //   .collection("items")
-  //.where("name","==","Biryani")
+   //.where("name","==","Biryani")
   .orderBy("products", "asc")
   .get()
   .then(snapshot => {
@@ -150,7 +147,7 @@ const addItem = url => {
       name: form1.name.value,
       item: form1.city.value,
       item_photo: url,
-      ref: "products/6mVfopcUh3tkIBwB4VCS/Product Family/8PxkDH07SNUlg6MbpSrU"
+      products: db.doc("products/6mVfopcUh3tkIBwB4VCS/Product Family/8PxkDH07SNUlg6MbpSrU")
     });
   form1.name.value = "";
   form1.city.value = "";
