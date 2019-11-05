@@ -2,6 +2,8 @@ const itemsList = document.querySelector("#items-list");
 const form1 = document.querySelector("#add-items-form");
 const header = document.querySelector("h2");
 
+
+
 //TODO:updating cafe header
 header.innerHTML = `<h2>geetanjali cafe</h2>`;
 //TODO:CollectionGroup query testing uploading in an object pulling this in begining
@@ -13,7 +15,7 @@ class Products {
     this.path = path;
   }
 }
-let ProductFamilyArray = [];
+const ProductFamilyArray = [];
 db.collectionGroup("Product Family")
 //db.collection("/vendors/qXrUwwcJGwEX7ngqfvBx/items")//for testing
   //.orderBy("prod-ref", "asc")
@@ -30,12 +32,15 @@ db.collectionGroup("Product Family")
       });
     });
     console.log("prd family :", ProductFamilyArray);
+    //TODO:accessing product path from name
+    ProductFamilyArray.forEach(elem => {
+        if(elem.name ==="momos"){
+          console.log('momos path: ',elem.path);
+        }
+    });
+  
   });
-  //let objProd = ProductFamilyArray.filter(obj => obj.docId === "34JEKxsBlInxwOkyAre5");
-   // console.log(objProd);
-  //var pnam = prodName[0].name;
- 
-
+     
 //TODO: creating a function to render cafe items
 function renderItems(doc) {
   //creating elements to li
@@ -52,10 +57,10 @@ function renderItems(doc) {
   item.textContent = doc.data().item;
   //TODO adding the product from URl and product id
   prodid = doc.data().products.id;
-   let prodName = ProductFamilyArray.filter(obj => obj.docId === prodid);
+  let prodName = ProductFamilyArray.filter(obj => obj.docId === prodid);
   var pnam = prodName[0].name;
-  console.log('product Id: ',prodid)
-  console.log('productname: ',pnam);
+  // console.log('product Id: ',prodid);
+  //console.log('productname: ',pnam);
   product.textContent = pnam;
   li.appendChild(image);
   li.appendChild(name);
@@ -148,10 +153,12 @@ const addItem = url => {
       item: form1.city.value,
       item_photo: url,
       products: db.doc("products/6mVfopcUh3tkIBwB4VCS/Product Family/8PxkDH07SNUlg6MbpSrU")
-    });
+     });
+     //console.log('product name : ',form1.options[form1.selectedIndex].value);
   form1.name.value = "";
   form1.city.value = "";
 };
+
 
 //TODO:trying with uploding the image to firestore and passing the value to fireStore
 //uploading a file in firebase storage
