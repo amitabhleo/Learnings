@@ -122,6 +122,23 @@ db.collection("/vendors/qXrUwwcJGwEX7ngqfvBx/items")
       });
       */
 
+master
+db.collectionGroup("Product Family")
+//.where("name", ">", "a")
+//.orderBy("prod-ref", "asc")
+.get()
+.then(snapshot => {
+
+  snapshot.docs.forEach(docu => {
+    console.log('valueof :',docu.valueOf());
+    console.log('collectionGroup Id :',docu.id);
+    console.log('collectionGroup :',docu.data().name);
+
+    //renderItems(docu);
+  });
+});
+=======
+ master
 // saving data
 
       //Old codeadding new restaurant to firebase
