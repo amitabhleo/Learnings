@@ -127,7 +127,7 @@ db.collection("/vendors/qXrUwwcJGwEX7ngqfvBx/items")
       });
       */
 
-master
+
 db.collectionGroup("Product Family")
 //.where("name", ">", "a")
 //.orderBy("prod-ref", "asc")
@@ -142,8 +142,8 @@ db.collectionGroup("Product Family")
     //renderItems(docu);
   });
 });
-=======
- master
+
+ 
 // saving data
 
       //Old codeadding new restaurant to firebase
