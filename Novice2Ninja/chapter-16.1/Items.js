@@ -2,10 +2,9 @@ const itemsList = document.querySelector("#items-list");
 const form1 = document.querySelector("#add-items-form");
 const header = document.querySelector("h2");
 
-
-
 //TODO:updating cafe header
 header.innerHTML = `<h2>geetanjali cafe</h2>`;
+
 //TODO:CollectionGroup query testing uploading in an object pulling this in begining
 class Products {
   //in javascript have to define a constructor
@@ -17,30 +16,49 @@ class Products {
 }
 const ProductFamilyArray = [];
 db.collectionGroup("Product Family")
-//db.collection("/vendors/qXrUwwcJGwEX7ngqfvBx/items")//for testing
+  // db.collection("products")
+  // .where("name", "==", "grocery")
+  //db.collection("/vendors/qXrUwwcJGwEX7ngqfvBx/items")//for testing
   //.orderBy("prod-ref", "asc")
   .get()
   .then(snapshot => {
-    //console.log('path of product ',snapshot.docs[0].ref.path);
+    console.log("product master ", snapshot.docs[0].ref.parent.parent.id);
     snapshot.docs.forEach(docu => {
-     
-      prd = new Products(docu.id, docu.data().name, docu.ref.path);
+      prd = new Products(
+        docu.id,
+        docu.data().name,
+        docu.ref.path,
+        docu.ref.parent.parent.id
+      );
       ProductFamilyArray.push({
         docId: docu.id,
         name: docu.data().name,
-        path: docu.ref.path
+        path: docu.ref.path,
+        prodId: docu.ref.parent.parent.id
       });
     });
     console.log("prd family :", ProductFamilyArray);
-    //TODO:accessing product path from name
-    ProductFamilyArray.forEach(elem => {
-        if(elem.name ==="momos"){
-          console.log('momos path: ',elem.path);
-        }
-    });
-  
   });
-     
+//TODO:accessing product path from name
+
+const getProd = prd => {
+  var varPath;
+  var vobj;
+  ProductFamilyArray.forEach(ele => {
+    if (ele.name === prd) {
+      console.log(ele.path);
+      varPath = ele.path;
+      vobj = ele;
+    }
+  });
+  //return varPath;
+  return vobj;
+};
+
+//TODO:Receiving the data and fetching the product family from the prodid
+var ls = localStorage.getItem("variableName");
+console.log("value of id", ls);
+
 //TODO: creating a function to render cafe items
 function renderItems(doc) {
   //creating elements to li
@@ -55,13 +73,8 @@ function renderItems(doc) {
   image.src = doc.data().item_photo;
   name.textContent = doc.data().name;
   item.textContent = doc.data().item;
-  //TODO adding the product from URl and product id
-  prodid = doc.data().products.id;
-  let prodName = ProductFamilyArray.filter(obj => obj.docId === prodid);
-  var pnam = prodName[0].name;
-  // console.log('product Id: ',prodid);
-  //console.log('productname: ',pnam);
-  product.textContent = pnam;
+  product.textContent = doc.data().product;
+
   li.appendChild(image);
   li.appendChild(name);
   li.appendChild(item);
@@ -78,39 +91,43 @@ function renderItems(doc) {
 //     });
 // });
 //another way to query sub-collection this seems a better way -working code
-db.collection("/vendors/qXrUwwcJGwEX7ngqfvBx/items")
-   //.where("name","==","Biryani")
+//db.collection("/vendors/qXrUwwcJGwEX7ngqfvBx/items")
+//.where("name","==","Biryani")
+db.collectionGroup("items")
   .orderBy("products", "asc")
+  .where("prodMasId", "==", ls)
   .get()
   .then(snapshot => {
     snapshot.docs.forEach(docu => {
-      //console.log(docu.data().products.path);
+      //fetching the value of the vendor id
+      console.log(docu.ref.parent.parent.id);
       //console.log('prod path:',docu.data().products.id);
       // let prodname = prdName(newurl);
-      // console.log('prodname here:',prodname);
       //console.log(docu.id);
+      // console.log('prodname here:',docu.id);
+      // console.log('prodname here:',docu.data().name);
       renderItems(docu);
     });
   });
 //TODO: NOT BEING USED NOW  fetching the products collection
-    //db.doc("products/FKJCWPS2D9nyhHxaEYi7/Product Family/1KnVRgG8r9jzYE3yjLp8")
-    //db.doc("/products/FKJCWPS2D9nyhHxaEYi7/Product Family/4xPn7YqHQuuQRwGXOXxL")
-    // .get()
-    // .then(snap => {
-    //     console.log("product Name:", snap.data().name);
-    // });
-    // const prdName = prdUrl => {
-    //   db.doc(prdUrl)
-    //     .get()
-    //     .then(snap => {
-    //       var pname = snap.data().name;
-    //       console.log("product Name:", pname); //snap.data().name);
-    //       return pname;
-    //     });
-    // };
+//db.doc("products/FKJCWPS2D9nyhHxaEYi7/Product Family/1KnVRgG8r9jzYE3yjLp8")
+//db.doc("/products/FKJCWPS2D9nyhHxaEYi7/Product Family/4xPn7YqHQuuQRwGXOXxL")
+// .get()
+// .then(snap => {
+//     console.log("product Name:", snap.data().name);
+// });
+// const prdName = prdUrl => {
+//   db.doc(prdUrl)
+//     .get()
+//     .then(snap => {
+//       var pname = snap.data().name;
+//       console.log("product Name:", pname); //snap.data().name);
+//       return pname;
+//     });
+// };
 
-    //vendors/GegiiT80tJ8dWoXCHXBK/items/Nw2Idi4Ry9uKyG4VQrYk
-    /*TODO: not required now
+//vendors/GegiiT80tJ8dWoXCHXBK/items/Nw2Idi4Ry9uKyG4VQrYk
+/*TODO: not required now
     var prodRefAloo = db
       .collection("vendors")
       .doc("qXrUwwcJGwEX7ngqfvBx")
@@ -127,55 +144,61 @@ db.collection("/vendors/qXrUwwcJGwEX7ngqfvBx/items")
       });
       */
 
+//TODO: NOT BEING USED
+// db.collectionGroup("Product Family")
+// //.where("name", ">", "a")
+// //.orderBy("prod-ref", "asc")
+// .get()
+// .then(snapshot => {
 
-db.collectionGroup("Product Family")
-//.where("name", ">", "a")
-//.orderBy("prod-ref", "asc")
-.get()
-.then(snapshot => {
+//   snapshot.docs.forEach(docu => {
+//     //console.log('valueof :',docu.valueOf());
+//     console.log('collectionGroup Id :',docu.id);
+//     console.log('collectionGroup :',docu.data().name);
 
-  snapshot.docs.forEach(docu => {
-    console.log('valueof :',docu.valueOf());
-    console.log('collectionGroup Id :',docu.id);
-    console.log('collectionGroup :',docu.data().name);
+//     //renderItems(docu);
+//   });
+// });
 
-    //renderItems(docu);
-  });
-});
-
- 
 // saving data
 
-      //Old codeadding new restaurant to firebase
-      // form1.addEventListener("submit", e => {
-      //     e.preventDefault();
-      //     db.collection("vendors").add({
-      //     name: form1.name.value,
-      //     city: form1.city.value
+//Old codeadding new restaurant to firebase
+// form1.addEventListener("submit", e => {
+//     e.preventDefault();
+//     db.collection("vendors").add({
+//     name: form1.name.value,
+//     city: form1.city.value
 
-      //     });
-      //     form1.name.value = "";
-      //     form1.city.value = "";
-      // });
+//     });
+//     form1.name.value = "";
+//     form1.city.value = "";
+// });
 
 //TODO:adding a new restaurant from a function after the image is uploaded
 //hard coding for a new product lets say momos
 const addItem = url => {
   console.log("photo link is : ", url);
+  prdName = form1.product.value;
+  var prd = getProd(prdName).path;
+  var prId = getProd(prdName).prodId;
+  //console.log('burger-path:',prd);
   db.collection("vendors")
-    .doc("qXrUwwcJGwEX7ngqfvBx")
+    .doc("qXrUwwcJGwEX7ngqfvBx") //("3oGYeJUBvDsJorMiEeGZ")
     .collection("items")
     .add({
       name: form1.name.value,
       item: form1.city.value,
       item_photo: url,
-      products: db.doc("products/6mVfopcUh3tkIBwB4VCS/Product Family/8PxkDH07SNUlg6MbpSrU")
-     });
-     //console.log('product name : ',form1.options[form1.selectedIndex].value);
+      product: prdName,
+      products: db.doc(prd),
+      prodMasId: prId
+      //products: db.doc("products/6mVfopcUh3tkIBwB4VCS/Product Family/8PxkDH07SNUlg6MbpSrU")
+    });
+
   form1.name.value = "";
   form1.city.value = "";
+  form1.product.value = "";
 };
-
 
 //TODO:trying with uploding the image to firestore and passing the value to fireStore
 //uploading a file in firebase storage
