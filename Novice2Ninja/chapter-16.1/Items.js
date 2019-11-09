@@ -1,6 +1,6 @@
 const itemsList = document.querySelector("#items-list");
 const form1 = document.querySelector("#add-items-form");
-const itemName = document.querySelector("h6");
+const itemName = document.querySelector("h5");
 const vendorName = document.querySelector("h6");
 const cafeName = document.querySelector(".cafeId");
 
@@ -11,8 +11,9 @@ document.getElementById("items-list").addEventListener("click", function(e) {
   // try doing console.log(e.target.nodeName), it will result LI
   if (e.target && e.target.nodeName == "LI") {
     console.log(e.target.id + " was clicked");
-    console.log(e.target.getAttribute("data-id") + " value of data-id");
-    const vendor_id = e.target.getAttribute("data-id");
+    //console.log(e.target.parent.parent + " parent id");
+    console.log(e.target.getAttribute("vendor-id") + " value of vendor-id");
+    const vendor_id = e.target.getAttribute("vendor-id");
     vendorName.innerHTML = `<h5>${vendor_id}</h5>`;
     window.open("http://127.0.0.1:5500/Novice2Ninja/chapter-16.1/myItems.html");
   // Storing the data:
@@ -89,6 +90,7 @@ function renderItems(doc) {
   //let btn = document.createElement("BUTTON")
   //adding elements to li
   li.setAttribute("data-id", doc.id);
+  li.setAttribute("vendor-id",doc.ref.parent.parent.id);
   image.src = doc.data().item_photo;
   name.textContent = doc.data().name;
   item.textContent = doc.data().item;
@@ -114,7 +116,7 @@ function renderItems(doc) {
 //.where("name","==","Biryani")
 db.collectionGroup("items")
   .orderBy("products", "asc")
-  .where("prodMasId", "==", db.doc())
+  .where("prodMasId", "==", ls)
   //.where("vendorRef","==","vendors/J4iUI2KPDNDAHp4yGsUd")
   .get()
   .then(snapshot => {

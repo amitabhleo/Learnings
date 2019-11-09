@@ -1,6 +1,7 @@
 const itemsList = document.querySelector("#items-list");
 const form1 = document.querySelector("#add-items-form");
 const header = document.querySelector("h6");
+const vendorName = document.querySelector("h5");
 
 //TODO:Receiving the data and fetching the product family from the prodid
 var vid = localStorage.getItem("vendorId");
@@ -57,12 +58,12 @@ const getProd = prd => {
   return vobj;
 };
 
-//TODO:Receiving the data and fetching the product family from the prodid
-var ls = localStorage.getItem("variableName");
-console.log("value of id", ls);
+//TODO:Receiving the data and fetching the vendor id from the prodid
+var vid = localStorage.getItem("vendorId");
+console.log("value of id", vid);
 
 //TODO:updating cafe header
-header.innerHTML = `<h2>${ls}</h2>`;
+vendorName.innerHTML = `<h2>${vid}</h2>`;
 
 //TODO: creating a function to render cafe items
 function renderItems(doc) {
@@ -99,11 +100,10 @@ function renderItems(doc) {
 //db.collection("/vendors/qXrUwwcJGwEX7ngqfvBx/items")
 //.where("name","==","Biryani")
 //TODO:using collection instead of collection group
-db.collection("vendors/J4iUI2KPDNDAHp4yGsUd/items")
+db.collection("vendors")
+.doc(vid)
+.collection("items")
   .orderBy("products", "asc")
-  //.where("vendors/doc","==","J4iUI2KPDNDAHp4yGsUd")
-  //.where("prodMasId", "==", db.doc())
-  //.where("vendorRef","==","vendors/J4iUI2KPDNDAHp4yGsUd")
   .get()
   .then(snapshot => {
     snapshot.docs.forEach(docu => {
