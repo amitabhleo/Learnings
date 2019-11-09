@@ -1,24 +1,10 @@
 const itemsList = document.querySelector("#items-list");
 const form1 = document.querySelector("#add-items-form");
-const itemName = document.querySelector("h6");
-const vendorName = document.querySelector("h6");
-const cafeName = document.querySelector(".cafeId");
+const header = document.querySelector("h6");
 
-
-// TODO:locate your element and add the Click Event Listener
-document.getElementById("items-list").addEventListener("click", function(e) {
-  // e.target is our targetted element.
-  // try doing console.log(e.target.nodeName), it will result LI
-  if (e.target && e.target.nodeName == "LI") {
-    console.log(e.target.id + " was clicked");
-    console.log(e.target.getAttribute("data-id") + " value of data-id");
-    const vendor_id = e.target.getAttribute("data-id");
-    vendorName.innerHTML = `<h5>${vendor_id}</h5>`;
-    window.open("http://127.0.0.1:5500/Novice2Ninja/chapter-16.1/myItems.html");
-  // Storing the data:
-  localStorage.setItem("vendorId",vendor_id);
-  }
-});
+//TODO:Receiving the data and fetching the product family from the prodid
+var vid = localStorage.getItem("vendorId");
+console.log("value of id", vid);
 
 //TODO:CollectionGroup query testing uploading in an object pulling this in begining
 class Products {
@@ -76,7 +62,7 @@ var ls = localStorage.getItem("variableName");
 console.log("value of id", ls);
 
 //TODO:updating cafe header
-itemName.innerHTML = `<h2>${ls}</h2>`;
+header.innerHTML = `<h2>${ls}</h2>`;
 
 //TODO: creating a function to render cafe items
 function renderItems(doc) {
@@ -112,9 +98,11 @@ function renderItems(doc) {
 //another way to query sub-collection this seems a better way -working code
 //db.collection("/vendors/qXrUwwcJGwEX7ngqfvBx/items")
 //.where("name","==","Biryani")
-db.collectionGroup("items")
+//TODO:using collection instead of collection group
+db.collection("vendors/J4iUI2KPDNDAHp4yGsUd/items")
   .orderBy("products", "asc")
-  .where("prodMasId", "==", db.doc())
+  //.where("vendors/doc","==","J4iUI2KPDNDAHp4yGsUd")
+  //.where("prodMasId", "==", db.doc())
   //.where("vendorRef","==","vendors/J4iUI2KPDNDAHp4yGsUd")
   .get()
   .then(snapshot => {
