@@ -23,8 +23,9 @@ db.collectionGroup("Product Family")
   // .where("name", "==", "grocery")
   //db.collection("/vendors/qXrUwwcJGwEX7ngqfvBx/items")//for testing
   //.orderBy("prod-ref", "asc")
-  .get()
-  .then(snapshot => {
+  //TODO:realtime listner instead of .get.then use onSnapshot
+  .onSnapshot(snapshot => {
+  //.get().then(snapshot => {
     console.log("product group ", snapshot.docs[0].ref.parent.parent.id);
     snapshot.docs.forEach(docu => {
       prd = new Products(
@@ -122,7 +123,8 @@ const addItem = url => {
   var prId = getProd(prdName).prodId;
   //console.log('burger-path:',prd);
   db.collection("vendors")
-    .doc("J4iUI2KPDNDAHp4yGsUd")//("qXrUwwcJGwEX7ngqfvBx") //("3oGYeJUBvDsJorMiEeGZ")
+    .doc(vid)
+    //("J4iUI2KPDNDAHp4yGsUd")//("qXrUwwcJGwEX7ngqfvBx") //("3oGYeJUBvDsJorMiEeGZ")
     .collection("items")
     .add({
       name: form1.name.value,
@@ -131,7 +133,8 @@ const addItem = url => {
       product: prdName,
       products: db.doc(prd),
       prodMasId: prId,
-      vendorRef: db.doc("vendors/J4iUI2KPDNDAHp4yGsUd")
+      vendorRef: db.doc("vendors/"+vid)
+      //db.doc("vendors/J4iUI2KPDNDAHp4yGsUd")
       //products: db.doc("products/6mVfopcUh3tkIBwB4VCS/Product Family/8PxkDH07SNUlg6MbpSrU")
     });
 

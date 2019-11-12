@@ -46,8 +46,9 @@ function renderCafe(doc) {
 //querying Firebase and getting the data
 db.collection("products")
   .orderBy("name")
-  .get()
-  .then(snapshot => {
+  //TODO:realtime listner instead of .get.then use onSnapshot
+  .onSnapshot(snapshot => {
+  //.get().then(snapshot => {
     snapshot.docs.forEach(doc => {
       renderCafe(doc);
     });

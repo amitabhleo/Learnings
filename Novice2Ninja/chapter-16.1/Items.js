@@ -37,15 +37,16 @@ db.collectionGroup("Product Family")
   // .where("name", "==", "grocery")
   //db.collection("/vendors/qXrUwwcJGwEX7ngqfvBx/items")//for testing
   //.orderBy("prod-ref", "asc")
-  .get()
-  .then(snapshot => {
+  //TODO:realtime listner instead of .get.then use onSnapshot
+  //.get().then(snapshot => {
+    .onSnapshot(snapshot => {
     console.log("product group ", snapshot.docs[0].ref.parent.parent.id);
     snapshot.docs.forEach(docu => {
       prd = new Products(
         docu.id,
         docu.data().name,
         docu.ref.path,
-        docu.ref.parent.parent.id
+        docu.ref.parent.parent.id 
       );
       ProductFamilyArray.push({
         docId: docu.id,
@@ -136,7 +137,8 @@ const addItem = url => {
   var prId = getProd(prdName).prodId;
   //console.log('burger-path:',prd);
   db.collection("vendors")
-    .doc("J4iUI2KPDNDAHp4yGsUd")//("qXrUwwcJGwEX7ngqfvBx") //("3oGYeJUBvDsJorMiEeGZ")
+    .doc("94hgK4DfbSye4tO3rbCn")//("J4iUI2KPDNDAHp4yGsUd")
+    //("qXrUwwcJGwEX7ngqfvBx") //("3oGYeJUBvDsJorMiEeGZ")
     .collection("items")
     .add({
       name: form1.name.value,
