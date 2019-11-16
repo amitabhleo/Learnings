@@ -1,25 +1,11 @@
 const itemsList = document.querySelector("#items-list");
 const form1 = document.querySelector("#add-items-form");
-const itemName = document.querySelector("h5");
-const vendorName = document.querySelector("h6");
-const cafeName = document.querySelector(".cafeId");
+const header = document.querySelector("h6");
+const vendorName = document.querySelector("h5");
 
-
-// TODO:locate your element and add the Click Event Listener
-document.getElementById("items-list").addEventListener("click", function(e) {
-  // e.target is our targetted element.
-  // try doing console.log(e.target.nodeName), it will result LI
-  if (e.target && e.target.nodeName == "LI") {
-    console.log(e.target.id + " was clicked");
-    //console.log(e.target.parent.parent + " parent id");
-    console.log(e.target.getAttribute("vendor-id") + " value of vendor-id");
-    const vendor_id = e.target.getAttribute("vendor-id");
-    vendorName.innerHTML = `<h5>${vendor_id}</h5>`;
-    window.open("http://127.0.0.1:5500/Novice2Ninja/chapter-16.1/myItems.html");
-  // Storing the data:
-  localStorage.setItem("vendorId",vendor_id);
-  }
-});
+//TODO:Receiving the data and fetching the product family from the prodid
+var vid = localStorage.getItem("vendorId");
+console.log("value of id", vid);
 
 //TODO:CollectionGroup query testing uploading in an object pulling this in begining
 class Products {
@@ -38,15 +24,15 @@ db.collectionGroup("Product Family")
   //db.collection("/vendors/qXrUwwcJGwEX7ngqfvBx/items")//for testing
   //.orderBy("prod-ref", "asc")
   //TODO:realtime listner instead of .get.then use onSnapshot
+  .onSnapshot(snapshot => {
   //.get().then(snapshot => {
-    .onSnapshot(snapshot => {
     console.log("product group ", snapshot.docs[0].ref.parent.parent.id);
     snapshot.docs.forEach(docu => {
       prd = new Products(
         docu.id,
         docu.data().name,
         docu.ref.path,
-        docu.ref.parent.parent.id 
+        docu.ref.parent.parent.id
       );
       ProductFamilyArray.push({
         docId: docu.id,
@@ -73,12 +59,12 @@ const getProd = prd => {
   return vobj;
 };
 
-//TODO:Receiving the data and fetching the product family from the prodid
-var ls = localStorage.getItem("variableName");
-console.log("value of id", ls);
+//TODO:Receiving the data and fetching the vendor id from the prodid
+var vid = localStorage.getItem("vendorId");
+console.log("value of id", vid);
 
 //TODO:updating cafe header
-itemName.innerHTML = `<h2>${ls}</h2>`;
+vendorName.innerHTML = `<h2>${vid}</h2>`;
 
 //TODO: creating a function to render cafe items
 function renderItems(doc) {
@@ -91,7 +77,6 @@ function renderItems(doc) {
   //let btn = document.createElement("BUTTON")
   //adding elements to li
   li.setAttribute("data-id", doc.id);
-  li.setAttribute("vendor-id",doc.ref.parent.parent.id);
   image.src = doc.data().item_photo;
   name.textContent = doc.data().name;
   item.textContent = doc.data().item;
@@ -115,10 +100,11 @@ function renderItems(doc) {
 //another way to query sub-collection this seems a better way -working code
 //db.collection("/vendors/qXrUwwcJGwEX7ngqfvBx/items")
 //.where("name","==","Biryani")
-db.collectionGroup("items")
+//TODO:using collection instead of collection group
+db.collection("vendors")
+.doc(vid)
+.collection("items")
   .orderBy("products", "asc")
-  .where("prodMasId", "==", ls)
-  //.where("vendorRef","==","vendors/J4iUI2KPDNDAHp4yGsUd")
   .get()
   .then(snapshot => {
     snapshot.docs.forEach(docu => {
@@ -137,8 +123,8 @@ const addItem = url => {
   var prId = getProd(prdName).prodId;
   //console.log('burger-path:',prd);
   db.collection("vendors")
-    .doc("94hgK4DfbSye4tO3rbCn")//("J4iUI2KPDNDAHp4yGsUd")
-    //("qXrUwwcJGwEX7ngqfvBx") //("3oGYeJUBvDsJorMiEeGZ")
+    .doc(vid)
+    //("J4iUI2KPDNDAHp4yGsUd")//("qXrUwwcJGwEX7ngqfvBx") //("3oGYeJUBvDsJorMiEeGZ")
     .collection("items")
     .add({
       name: form1.name.value,
@@ -147,7 +133,8 @@ const addItem = url => {
       product: prdName,
       products: db.doc(prd),
       prodMasId: prId,
-      vendorRef: db.doc("vendors/J4iUI2KPDNDAHp4yGsUd")
+      vendorRef: db.doc("vendors/"+vid)
+      //db.doc("vendors/J4iUI2KPDNDAHp4yGsUd")
       //products: db.doc("products/6mVfopcUh3tkIBwB4VCS/Product Family/8PxkDH07SNUlg6MbpSrU")
     });
 

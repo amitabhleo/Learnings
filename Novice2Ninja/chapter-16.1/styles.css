@@ -23,35 +23,37 @@ h1{
 ul{
     list-style-type: none;
     padding: 0;
-    white-space: nowrap;
-
+    white-space: nowrap; 
+    columns: 2; 
 }
 
 li{
-    padding: 70px;
+    padding: 30px;
     background: #f6f6f6;
-    font-size: 20px;
+    font-size: 15px;
     color: #2e2c2c;
-    position: relative;
-    border-bottom: 1px solid #e6e6e6;
-    height: 46px;
+    position: relative; 
+    border-bottom: 1px solid #dfe0e9;
+    height: 50px;
+    overflow-wrap: break-word;
+    /* margin:auto; */
 }
 
 li:nth-child(even){
-    padding: 70px;
+    padding: 30px;
     background: #f2f2f2;
 }
 
 li span{
     display: inline-block;
-    text-emphasis: bold;
+    /* text-emphasis: bold; */
     padding: 20px;
-    margin-left: 5px;
+    margin-left: 2px;
 }
 
 li span:nth-child(2){
     font-size: 20px;
-    margin-top: 6px;
+    margin-top: 1px;
     color: #5f4c45;
 }
 

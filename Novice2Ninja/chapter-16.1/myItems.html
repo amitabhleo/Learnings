@@ -7,26 +7,37 @@
     <link rel="stylesheet" href="styles.css" />
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-storage.js"></script>
 
   </head>
   <body>
-    <h1>Product Groups</h1>
-    <h5 class="cafeId">Cafe Name</h5>
-    
+    <h1>My Product Items</h1>
+    <h6 >Item Name</h6>
+    <h5>vendor name</h5>
+
     <div class="content">
-      <form id="add-cafe-form">
-        <input type="text" name="name" placeholder="Prod Group name" />
-        <input type="text" name="city" placeholder="City" />
+      <form id="add-items-form">
+        <input type="text" name="name" placeholder="Item name" />
+        <input type="text" name="city" placeholder="Item Description" />
+        <input type="text" name="product" placeholder="product" />
+        <!--TODO:this has to be done at a later date
+        <select name="product" id="product">
+          <option value="coffee">coffee</option>
+          <option value="tea">tea</option>
+          <option value="momos">momos</option>
+          <option value="noodles">noodles</option>
+          <option value="Banana">Banana</option>
+          <option value="Apple">Apple</option>
+          <option value="Aloo">Aloo</option>
+          <option value="Pyaaz">Pyaaz</option>
+        </select> -->
         <input type="file" name="fileButton" id="fileButton" accept="image/*" >
         <!-- <button>Add Cafe</button> -->
       </form>
       
-      <ul id="cafe-list">
-        <!-- <li>sample item</li>
-         li elements from js here -->
+      <ul id="Items-list">
+          <!-- li elements from js here -->
       </ul>
     </div>
     <!-- TODO: Add SDKs for Firebase products that you want to use
@@ -47,10 +58,11 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
+        const storage = firebase.storage();
         //firebase.analytics();
-      </script> -->
+    </script> -->
       
-       <script src="Cafe.js"></script>
-       
+       <!-- <script src="Cafe.js"></script>  -->
+       <script src="myItems.js"></script>
   </body>
 </html>

@@ -2,6 +2,7 @@ const cafeList = document.querySelector("#cafe-list");
 const form = document.querySelector("#add-cafe-form");
 const cafeName = document.querySelector(".cafeId");
 
+
 // TODO:locate your element and add the Click Event Listener
 document.getElementById("cafe-list").addEventListener("click", function(e) {
   // e.target is our targetted element.
@@ -12,7 +13,10 @@ document.getElementById("cafe-list").addEventListener("click", function(e) {
     const dataid = e.target.getAttribute("data-id");
     cafeName.innerHTML = `<h2>${dataid}</h2>`;
     window.open("http://127.0.0.1:5500/Novice2Ninja/chapter-16.1/Items.html");
+  // Storing the data:
+  localStorage.setItem("variableName",dataid);
   }
+
 });
 //creating a function to render cafe
 function renderCafe(doc) {
@@ -40,10 +44,11 @@ function renderCafe(doc) {
   cafeList.appendChild(li);
 }
 //querying Firebase and getting the data
-db.collection("vendors")
+db.collection("products")
   .orderBy("name")
-  .get()
-  .then(snapshot => {
+  //TODO:realtime listner instead of .get.then use onSnapshot
+  .onSnapshot(snapshot => {
+  //.get().then(snapshot => {
     snapshot.docs.forEach(doc => {
       renderCafe(doc);
     });
@@ -63,7 +68,7 @@ db.collection("vendors")
 //TODO:adding a new restaurant from a function after the image is uploaded
 const addCafe = url => {
   console.log("photo link is : ", url);
-  db.collection("vendors").add({
+  db.collection("products").add({
     name: form.name.value,
     city: form.city.value,
     photo: url
