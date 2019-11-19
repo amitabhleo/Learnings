@@ -8,6 +8,10 @@ const vendorName = document.querySelector("h5");
 var vid = localStorage.getItem("vendorId");
 console.log("value of id", vid);
 
+//TODO:updating cafe header
+
+vendorName.innerHTML = `<h2>${vid}</h2>`;
+
 //TODO:CollectionGroup query testing uploading in an object pulling this in begining
 class Products {
   //in javascript have to define a constructor
@@ -18,6 +22,11 @@ class Products {
     this.prodid = prodid;
   }
 }
+
+//TODO:Receiving the data and fetching the product family from the prodid
+var prodFam = localStorage.getItem("variableName");
+console.log("product family id", prodFam);
+
 const ProductFamilyArray = [];
 db.collectionGroup("Product Family")
   // db.collection("products")
@@ -42,10 +51,12 @@ db.collectionGroup("Product Family")
         prodId: docu.ref.parent.parent.id
       });
       //TODO:adding the product in the dropdown
-      var option = document.createElement("option");
-      option.text = docu.data().name;
-      productSel.add(option);
-    });
+          if (prodFam == docu.ref.parent.parent.id){
+            var option = document.createElement("option");
+            option.text = docu.data().name;
+            productSel.add(option);
+          }
+      });
     console.log("prd family :", ProductFamilyArray);
   });
 //TODO:accessing product path from name
@@ -64,12 +75,6 @@ const getProd = prd => {
   return vobj;
 };
 
-//TODO:Receiving the data and fetching the vendor id from the prodid
-var vid = localStorage.getItem("vendorId");
-console.log("value of id", vid);
-
-//TODO:updating cafe header
-vendorName.innerHTML = `<h2>${vid}</h2>`;
 
 //TODO: creating a function to render cafe items
 function renderItems(doc) {
