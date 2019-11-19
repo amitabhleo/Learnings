@@ -8,6 +8,8 @@
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-storage.js"></script>
 
   </head>
@@ -20,18 +22,14 @@
       <form id="add-items-form">
         <input type="text" name="name" placeholder="Item name" />
         <input type="text" name="city" placeholder="Item Description" />
+        
+        <!-- TODO:this has to be done at a later date
         <input type="text" name="product" placeholder="product" />
-        <!--TODO:this has to be done at a later date
+         -->
         <select name="product" id="product">
-          <option value="coffee">coffee</option>
-          <option value="tea">tea</option>
-          <option value="momos">momos</option>
-          <option value="noodles">noodles</option>
-          <option value="Banana">Banana</option>
-          <option value="Apple">Apple</option>
-          <option value="Aloo">Aloo</option>
-          <option value="Pyaaz">Pyaaz</option>
-        </select> -->
+          <option value="no selction">none</option>
+          <
+        </select>
         <input type="file" name="fileButton" id="fileButton" accept="image/*" >
         <!-- <button>Add Cafe</button> -->
       </form>

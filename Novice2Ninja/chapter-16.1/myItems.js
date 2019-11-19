@@ -1,5 +1,6 @@
 const itemsList = document.querySelector("#items-list");
 const form1 = document.querySelector("#add-items-form");
+const productSel = document.getElementById("product");
 const header = document.querySelector("h6");
 const vendorName = document.querySelector("h5");
 
@@ -40,6 +41,10 @@ db.collectionGroup("Product Family")
         path: docu.ref.path,
         prodId: docu.ref.parent.parent.id
       });
+      //TODO:adding the product in the dropdown
+      var option = document.createElement("option");
+      option.text = docu.data().name;
+      productSel.add(option);
     });
     console.log("prd family :", ProductFamilyArray);
   });
@@ -118,7 +123,10 @@ db.collection("vendors")
 //hard coding for a new product lets say momos
 const addItem = url => {
   console.log("photo link is : ", url);
-  prdName = form1.product.value;
+  var e = document.getElementById("product");
+  var prdName = e.options[e.selectedIndex].value;
+  //prdName = form1.product.value;
+  console.log("product seleted",prdName);
   var prd = getProd(prdName).path;
   var prId = getProd(prdName).prodId;
   //console.log('burger-path:',prd);
