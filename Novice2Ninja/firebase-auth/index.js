@@ -39,8 +39,9 @@ login.addEventListener("click", evnt =>{
 let logout = document.querySelector("#logout");
 logout.addEventListener("click",evnt =>{
     //TODO:paste from firebase
-    firebase.auth().signOut().then(function() {
+    firebase.auth().signOut().then(function(){
         // Sign-out successful.
+        //windows.alert(user.email +"successfully signed off");
       }).catch(function(error) {
         // An error happened.
       });
