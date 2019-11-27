@@ -18,42 +18,55 @@ h1{
     background: #fff;
     max-width: 960px;
     margin: 30px auto;
-    padding:  20px 30px;
+    padding:  10px 20px;
     border-radius: 10px 20px 10px 10px;
     box-shadow: 1px 3px 5px #0000001a
 }
 ul{
     list-style-type: none;
     padding: 0;
-    white-space: nowrap; 
-    columns: 2; 
+    /* white-space: nowrap;  */
+    columns: 2;  
 }
 li{
-    padding: 30px;
-    background: #fdfdfd;
+    padding: 50px;
+    background: #f3f3f3;
     font-size: 15px;
-    color: #2e2c2c;
-    position: relative; 
+    /* color: #f3f1f1; */
+    position: relative ; 
     border-bottom: 1px solid #dfe0e9;
-    height: 50px;
+    height: 60px;
     overflow-wrap: break-word;
     /* margin:auto; */
 }
-li:nth-child(even){
-    padding: 30px;
-    background: #f7f7fc;
-}
-li span{
+
+ img + span{
     display: inline-block;
-    /* text-emphasis: bold; */
-    padding: 20px;
-    margin-left: 2px;
-}
-li span:nth-child(odd){
+    color:black;
+    padding: 10px;
+    text-align: right;
+    /* margin-left: 5px; */
     font-size: 20px;
+  } 
+ #main-nav span{
+    display: inline-block;
+     text-emphasis: bold; 
+    padding: 20px;
+     margin-left: 2px; 
+ }
+#cafe-list span:nth-child(odd){
+    font-size: 15px;
     margin-top: 1px;
-    color: #5f4c45;
+    background: #f7f7fc;
+    margin-left: 5px;
 }
+
+#cafe-list:nth-child(even){
+     /* padding: 30px;  */
+    background: #f7f7fc;
+    font-size: 15px;
+    margin-left: 5px;
+} 
 li div{
     position: absolute;
     top: 0;
