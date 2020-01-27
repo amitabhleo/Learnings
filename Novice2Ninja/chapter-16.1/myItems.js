@@ -1,11 +1,16 @@
 const itemsList = document.querySelector("#items-list");
 const form1 = document.querySelector("#add-items-form");
+const productSel = document.getElementById("product");
 const header = document.querySelector("h6");
 const vendorName = document.querySelector("h5");
 
 //TODO:Receiving the data and fetching the product family from the prodid
 var vid = localStorage.getItem("vendorId");
 console.log("value of id", vid);
+
+//TODO:updating cafe header
+
+vendorName.innerHTML = `<h2>${vid}</h2>`;
 
 //TODO:CollectionGroup query testing uploading in an object pulling this in begining
 class Products {
@@ -17,6 +22,11 @@ class Products {
     this.prodid = prodid;
   }
 }
+
+//TODO:Receiving the data and fetching the product family from the prodid
+var prodFam = localStorage.getItem("variableName");
+console.log("product family id", prodFam);
+
 const ProductFamilyArray = [];
 db.collectionGroup("Product Family")
   // db.collection("products")
@@ -40,7 +50,13 @@ db.collectionGroup("Product Family")
         path: docu.ref.path,
         prodId: docu.ref.parent.parent.id
       });
-    });
+      //TODO:adding the product in the dropdown
+          if (prodFam == docu.ref.parent.parent.id){
+            var option = document.createElement("option");
+            option.text = docu.data().name;
+            productSel.add(option);
+          }
+      });
     console.log("prd family :", ProductFamilyArray);
   });
 //TODO:accessing product path from name
@@ -59,12 +75,6 @@ const getProd = prd => {
   return vobj;
 };
 
-//TODO:Receiving the data and fetching the vendor id from the prodid
-var vid = localStorage.getItem("vendorId");
-console.log("value of id", vid);
-
-//TODO:updating cafe header
-vendorName.innerHTML = `<h2>${vid}</h2>`;
 
 //TODO: creating a function to render cafe items
 function renderItems(doc) {
@@ -118,7 +128,10 @@ db.collection("vendors")
 //hard coding for a new product lets say momos
 const addItem = url => {
   console.log("photo link is : ", url);
-  prdName = form1.product.value;
+  var e = document.getElementById("product");
+  var prdName = e.options[e.selectedIndex].value;
+  //prdName = form1.product.value;
+  console.log("product seleted",prdName);
   var prd = getProd(prdName).path;
   var prId = getProd(prdName).prodId;
   //console.log('burger-path:',prd);

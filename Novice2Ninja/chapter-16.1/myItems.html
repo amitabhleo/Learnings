@@ -8,10 +8,20 @@
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-storage.js"></script>
 
   </head>
   <body>
+    </head>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="Cafe.html" >Prod Family</a></li>
+        <li><a href="Items.html">Items</a></li>
+        <li><a href="myItems.html" class="active">My Items</a></li>
+      </ul>
+    </nav>
     <h1>My Product Items</h1>
     <h6 >Item Name</h6>
     <h5>vendor name</h5>
@@ -20,18 +30,13 @@
       <form id="add-items-form">
         <input type="text" name="name" placeholder="Item name" />
         <input type="text" name="city" placeholder="Item Description" />
+        
+        <!-- TODO:this has to be done at a later date
         <input type="text" name="product" placeholder="product" />
-        <!--TODO:this has to be done at a later date
+         -->
         <select name="product" id="product">
-          <option value="coffee">coffee</option>
-          <option value="tea">tea</option>
-          <option value="momos">momos</option>
-          <option value="noodles">noodles</option>
-          <option value="Banana">Banana</option>
-          <option value="Apple">Apple</option>
-          <option value="Aloo">Aloo</option>
-          <option value="Pyaaz">Pyaaz</option>
-        </select> -->
+          <!-- <img src="img/apples.jpg" alt="apple"> -->
+        </select>
         <input type="file" name="fileButton" id="fileButton" accept="image/*" >
         <!-- <button>Add Cafe</button> -->
       </form>

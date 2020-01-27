@@ -1,62 +1,72 @@
+#logo{
+    display: inline-block;
+    color: #88236f;
+    padding: 0%;
+}
 body{
     background: #eab0dc;
     font-family: ubuntu;
 }
-
 h1{
     color: #fff;
-    font-size: 64px;
+    font-size: 44px;
     letter-spacing: 2px;
-    margin-top: 80px;
+    margin-top: 50px;
     text-align: center;
 }
-
 .content{
     background: #fff;
     max-width: 960px;
     margin: 30px auto;
-    padding:  20px 30px;
-    border-radius: 10px 120px 10px 10px;
-    box-shadow: 1px 3px 5px rgba(0,0,0,0.1)
+    padding:  10px 20px;
+    border-radius: 10px 20px 10px 10px;
+    box-shadow: 1px 3px 5px #0000001a
 }
-
 ul{
     list-style-type: none;
     padding: 0;
-    white-space: nowrap; 
-    columns: 2; 
+    /* white-space: nowrap;  */
+    columns: 2;  
 }
-
 li{
-    padding: 30px;
-    background: #f6f6f6;
+    padding: 50px;
+    background: #f3f3f3;
     font-size: 15px;
-    color: #2e2c2c;
-    position: relative; 
+    /* color: #f3f1f1; */
+    position: relative ; 
     border-bottom: 1px solid #dfe0e9;
-    height: 50px;
+    height: 60px;
     overflow-wrap: break-word;
     /* margin:auto; */
 }
 
-li:nth-child(even){
-    padding: 30px;
-    background: #f2f2f2;
-}
-
-li span{
+ img + span{
     display: inline-block;
-    /* text-emphasis: bold; */
-    padding: 20px;
-    margin-left: 2px;
-}
-
-li span:nth-child(2){
+    color:black;
+    padding: 10px;
+    text-align: right;
+    /* margin-left: 5px; */
     font-size: 20px;
+  } 
+ #main-nav span{
+    display: inline-block;
+     text-emphasis: bold; 
+    padding: 20px;
+     margin-left: 2px; 
+ }
+#cafe-list span:nth-child(odd){
+    font-size: 15px;
     margin-top: 1px;
-    color: #5f4c45;
+    background: #f7f7fc;
+    margin-left: 5px;
 }
 
+#cafe-list:nth-child(even){
+     /* padding: 30px;  */
+    background: #f7f7fc;
+    font-size: 15px;
+    margin-left: 5px;
+} 
 li div{
     position: absolute;
     top: 0;
@@ -68,7 +78,6 @@ li div{
     font-weight:  bold;
     cursor:  pointer;
 }
-
 form input{
     float: left;
     width: 38%;
@@ -81,7 +90,6 @@ form input{
     box-sizing: border-box;
     font-size: 18px;
 }
-
 form input:focus{
     outline: none;
     border-bottom: 3px solid #88236f;
@@ -94,7 +102,6 @@ form:after{
     clear: both;
     display: block;
 }
-
 button{
     border: 0;
     background: #fff;
@@ -106,4 +113,29 @@ button{
     font-family: ubuntu;
     letter-spacing: 1px;
     color: #999;
+}
+nav ul{
+    white-space: nowrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  nav li{
+    width: 25%;
+    display: inline-block;
+    font-size: 24px;
+  }
+  nav li a{
+    text-decoration: none;
+    color: #4b4b4b;
+  }
+  nav li a:hover{
+    text-decoration: underline;
+  }
+  nav li a.join{
+    color: #F63232;
+  }
+nav .active{
+    background-color: brown;
+    color:wheat;
 }
