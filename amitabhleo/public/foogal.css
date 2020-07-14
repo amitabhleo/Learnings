@@ -1,7 +1,7 @@
 body, ul, li, h1, h2, a{
     margin: 0;
     padding: 0;
-    font-family: tahoma;
+    font-family: sans-serif;
   }
   p{
     font-size: 18px;
@@ -33,13 +33,13 @@ body, ul, li, h1, h2, a{
     background:#FEB614;
     color: white;
     padding: 30px;
-    font-size: 60px;
+    font-size: 20px;
     position: absolute;
     left: 0;
-    top: 30%;
+    top: 50%;
   } 
   .banner .welcome span{
-    font-size: 1.4em;
+    font-size: 1.1em;
   }
   nav{
     background: #F4F4F4;
@@ -78,7 +78,7 @@ body, ul, li, h1, h2, a{
   }
   article h2{
     color: #F63232;
-    font-size: 48px;
+    font-size: 40px;
   }
   article p{
     line-height: 2em;
@@ -86,7 +86,7 @@ body, ul, li, h1, h2, a{
   }
   article p::first-line{
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1.0em;
   }
   .images{
     text-align: center;
@@ -149,7 +149,7 @@ body, ul, li, h1, h2, a{
   @media screen and (max-width: 960px){
   
     .banner .welcome{
-      font-size: 28px;
+      font-size: 20px;
     }
     nav li{
       font-size: 18px;
