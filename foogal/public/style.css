@@ -1,0 +1,71 @@
+
+body{
+    background: #eee;
+    font-family: 'Times New Roman', Times, serif;
+}
+h1{
+    text-align: left;
+    color: crimson;
+}
+p{
+  color: slategrey;
+  line-height: 30px;
+  letter-spacing: 2px;
+  columns: 2;
+  column-gap: 30px;
+}
+ul{
+  /* border-width: 2px;
+  border-style: solid;
+  border-color: crimson; */
+  border: 2px solid #c02a50;
+}
+h2{
+    color: orange;
+    background-color: slategray;
+    font-size: 20px;
+    font-family: Arial;
+    text-align: left;
+}
+li{
+  list-style-type: none;
+  display: inline;
+  padding: 30px;
+  text-decoration: blue;
+}
+a[href]{
+  background-color: green;
+  color: white;
+  text-decoration: none;
+}
+/* nav ul{
+    text-align: center;
+    padding: 0;
+    margin: 30px auto;
+}
+nav li{
+    display: inline-block;
+    margin: 0 10px;
+}
+nav a{
+    color: #777;
+    text-decoration: none;
+}
+nav ul{
+    white-space: nowrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  nav li{
+    width: 25%;
+    display: inline-block;
+    font-size: 24px;
+  }
+  nav li a{
+    text-decoration: none;
+    color: #4B4B4B;
+  }
+  nav li a:hover{
+    text-decoration: underline;
+  } */

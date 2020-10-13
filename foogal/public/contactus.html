@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html form</title>
+</head>
+<body>
+        <h1>Amitabh Meetup</h1>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="recipes.html">Recipes</a></li>
+            <li><a href="mario.html">Mario</a></li>
+            <li><a href="contactus.html"class="active">Contact us</a></li>
+          </ul>
+        </nav>
+        <h2>html forms</h2>
+        <form>
+          <label for="username">enter user name:</label>
+          <input type="text" id="username" name="username" placeholder="username" required/>
+          <br /><br />
+          <label for="email">enter email:</label>
+          <input type="email" id="email" name="email" placeholder="your email" required/>
+          <br /><br />
+          <label for="password">password:</label>
+          <input type="password" id="password" name="password" placeholder="password" required/>
+          <br /><br />
+          <p>select your age:</p>
+          <input type="radio" value="0-25" name="age" id="selection-1" />
+          <label for="section-1">0-25</label>
+          <input type="radio" value="26-50" name="age" id="selection-2" />
+          <label for="section-2">26-50</label>
+          <input type="radio" value="51+" name="age" id="selection-3" />
+          <label for="section-3">51+</label>
+          <br /><br />
+            <label for="question">Security Question:</label>
+          <select name="question" id="question">
+                <option value="q1">what colour are your favorite socks?</option>
+                <option value="q2">if you were a vegitable, what will it be?</option>
+                <option value="q3">what is your best friend name?</option>
+          </select>
+          <br><br>
+          <label for="answer">security question answer:</label>
+          <input type="text" name="answer" id="answer">
+          <br><br>
+          <label for="bio">your bio:</label><br>
+          <textarea name="bio" id="bio" cols="30" rows="10" placeholder="about you..."></textarea>
+          <br><br>
+          <input type="submit" name="submit" value="submit the form" id="submit">
+        </form>
+</body>
+</html>
