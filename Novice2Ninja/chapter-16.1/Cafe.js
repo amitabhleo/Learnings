@@ -12,7 +12,7 @@ document.getElementById("cafe-list").addEventListener("click", function(e) {
     console.log(e.target.getAttribute("data-id") + " value of data-id");
     const dataid = e.target.getAttribute("data-id");
     cafeName.innerHTML = `<h2>${dataid}</h2>`;
-    window.open("http://127.0.0.1:5500/Novice2Ninja/chapter-16.1/Items.html");
+    window.open("http://127.0.0.1:5500/Learnings/Novice2Ninja/chapter-16.1/Items.html");
   // Storing the data:
   localStorage.setItem("variableName",dataid);
   }

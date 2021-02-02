@@ -39,6 +39,7 @@ db.collectionGroup("Product Family")
         name: docu.data().name,
         path: docu.ref.path,
         prodId: docu.ref.parent.parent.id
+        //prodId: docu.ref.parent.parent.geohash
       });
     });
     console.log("prd family :", ProductFamilyArray);
@@ -109,7 +110,7 @@ db.collection("vendors")
   .then(snapshot => {
     snapshot.docs.forEach(docu => {
       //fetching the value of the vendor id
-      console.log('item-parent:',docu.ref.parent.parent.id);
+      console.log('item-parent/geohash',docu.ref.parent.parent.id);//parent.id);
       
       renderItems(docu);
     });
