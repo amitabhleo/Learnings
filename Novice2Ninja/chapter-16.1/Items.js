@@ -15,8 +15,8 @@ document.getElementById("items-list").addEventListener("click", function(e) {
     console.log(e.target.getAttribute("vendor-id") + " value of vendor-id");
     const vendor_id = e.target.getAttribute("vendor-id");
     vendorName.innerHTML = `<h5>${vendor_id}</h5>`;
-    window.open("http://127.0.0.1:5500/Novice2Ninja/chapter-16.1/myItems.html");
-  // Storing the data:
+    window.open("http://127.0.0.1:5500/Learnings/Novice2Ninja/chapter-16.1/myItems.html");
+    // Storing the data:
   localStorage.setItem("vendorId",vendor_id);
   }
 });
